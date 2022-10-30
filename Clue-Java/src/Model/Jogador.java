@@ -1,22 +1,22 @@
 package Model;
 
-public class Jogador {
-	static int ordem=1;
+class Jogador {
+	protected static int ordem=1;
 	protected int identificador;
-	public int numCartas;
-	public String personagem;
+	protected int numCartas;
+	protected String personagem;
 	private String []cartas;
 	private String [][]blocoNotas = {{"Corda","0"},{"Cano de Chumbo","0"},{"Faca","0"},{"Chave Inglesa","0"},{"Castiçal","0"},{"Revólver","0"},{"Coronel Mustard","0"},{"Srta. Scarlet","0"},{"Professor Plum","0"},{"Reverendo Green","0"},{"Sra. White","0"},{"Sra. Peacock","0"},{"Entrada","0"},{"Sala de Estar","0"},{"Sala de Jantar","0"},{"Cozinha","0"},{"Sala de Música","0"},{"Jardim de Inverno","0"},{"Salão de Jogos","0"},{"Biblioteca","0"},{"Escritório","0"}};
-	protected boolean turn = false;
-	public boolean block = false;
-	public int x, y;
+	protected boolean block = false;
+	protected int x, y;
 	
-	public Jogador(String pngm, int numJogadores){
+	public Jogador(String pngm, int n){
 		identificador = ordem;
 		ordem++;
 		personagem = pngm;
-		numCartas = contaCartas(numJogadores);
-		
+		numCartas = contaCartas(n);
+		Cartas c = Cartas.getInstancia();
+		recebeCartas(numCartas, c.DistribuiCartas(numCartas));
 	}
 
 	private int contaCartas(int numJogadores){ 
@@ -33,7 +33,8 @@ public class Jogador {
 		return -1;
 	}
 	
-	public void recebeCartas(int numCartas, String[] selecao) {
+	
+	protected void recebeCartas(int numCartas, String[] selecao) {
 		cartas = new String[numCartas];
 	    cartas = selecao;
 	    iniciaBlocoNotas();
@@ -43,8 +44,7 @@ public class Jogador {
 		for(String c: cartas) {
 			for(String[] b:blocoNotas) {
 				if(c==b[0]) {
-					b[1]="1";
-					break;
+					b[1]="1"; break;
 				}
 			}
 		}
@@ -53,8 +53,7 @@ public class Jogador {
 	protected void marcaBlocoNotas(String carta) {
 		for(String[] b:blocoNotas) {
 			if(carta==b[0]) {
-				b[1]="1";
-				break;
+				b[1]="1"; break;
 			}
 		}
 	}
@@ -63,28 +62,17 @@ public class Jogador {
 		return cartas;
 	}
 	
-	protected String[][] getBlocoNotas() {
+	public String[][] getBlocoNotas() {
 		return blocoNotas;
 	}
 
-	public void setTurn(){
-		turn = true;
-	}
-	
 	public void setBlock(){
 		block = true;
 	}
 	
+	/*método criado apenas para testes*/
 	public static void reiniciaJogador() {
 		ordem=1;
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
 	}
 }
 

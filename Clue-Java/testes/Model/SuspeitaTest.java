@@ -26,13 +26,10 @@ public class SuspeitaTest {
 	
 	@Test
 	public void testConfirmarPalpiteVerdadeiro() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		Jogador j1 = new Jogador("Srta. Scarlet", 3), j2 = new Jogador("Coronel Mustard",3), 
 				j3 = new Jogador("Professor Plum",3); 
-		j1.recebeCartas(j1.numCartas, cartas.DistribuiCartas(j1.numCartas));
-		j2.recebeCartas(j2.numCartas, cartas.DistribuiCartas(j2.numCartas));
-		j3.recebeCartas(j3.numCartas, cartas.DistribuiCartas(j3.numCartas));
 		Jogador[] jogadores = {j2,j3};
 		
 		Suspeita suspeita = new Suspeita(cartas.getEnvelope()[0], cartas.getEnvelope()[1], cartas.getEnvelope()[2]);
@@ -41,14 +38,10 @@ public class SuspeitaTest {
 	
 	@Test
 	public void testConfirmarPalpiteFalso() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		Jogador j1 = new Jogador("Srta. Scarlet", 3), j2 = new Jogador("Coronel Mustard",3), 
 				j3 = new Jogador("Professor Plum",3); 
-		
-		j1.recebeCartas(j1.numCartas, cartas.DistribuiCartas(j1.numCartas));
-		j2.recebeCartas(j2.numCartas, cartas.DistribuiCartas(j2.numCartas));
-		j3.recebeCartas(j3.numCartas, cartas.DistribuiCartas(j3.numCartas));
 		Jogador[] jogadores = {j2,j3};
 		
 		String[] Armas = {"Corda", "Cano de Chumbo", "Faca", "Chave Inglesa", "Castiçal", "Revólver"};
@@ -72,7 +65,8 @@ public class SuspeitaTest {
 	
 	@Test
 	public void testFazerAcusacaoVerdadeira() {
-		Cartas cartas = new Cartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		Jogador j = new Jogador("Srta. Scarlet", 3); 
 		
 		Suspeita suspeita = new Suspeita(cartas.getEnvelope()[0], cartas.getEnvelope()[1], cartas.getEnvelope()[2]);
@@ -82,7 +76,8 @@ public class SuspeitaTest {
 	
 	@Test
 	public void testFazerAcusacaoFalsa() {
-		Cartas cartas = new Cartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		Jogador j = new Jogador("Srta. Scarlet", 3); 
 		
 		Suspeita suspeita = new Suspeita(cartas.getEnvelope()[0], cartas.getEnvelope()[1], "errado");

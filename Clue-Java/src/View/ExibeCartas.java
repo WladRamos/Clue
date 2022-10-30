@@ -3,21 +3,19 @@ package View;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Model.Jogador;
-
+@SuppressWarnings("serial")
 public class ExibeCartas extends JPanel{
 	
 	private Image[] carta;
-	private int num;
 	private String[] cartas;
+	private int num;
 	
-	public ExibeCartas(Jogador jogador) {
-		num = jogador.numCartas;
-		cartas = jogador.getCartas();
+	public ExibeCartas(String [] cartasDoJogador) {
+		num = cartasDoJogador.length;
+		cartas = cartasDoJogador;
 		carta = new Image[num];
 	}
 	
@@ -126,14 +124,9 @@ public class ExibeCartas extends JPanel{
 			graficos.drawImage(carta[i], x, y,(int) w, (int) h, null);
 			x+=200;
 			if(contador ==2) {
-				y+=320;
-				x=200;
-			}
-			contador++;
-		}
-		
-		g.dispose();
-		
+				y+=320; x=200;
+			}contador++;
+		}g.dispose();
 	}
 }
 

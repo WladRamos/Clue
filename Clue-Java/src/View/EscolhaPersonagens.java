@@ -1,20 +1,14 @@
 package View;
 
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class EscolhaPersonagens extends JPanel {
-	private Image green;
-	private Image mustard;
-	private Image peacock;
-	private Image plum;
-	private Image scarlet;
-	private Image white;
+	private Image green, mustard, peacock, plum, scarlet, white;
 	
 	public EscolhaPersonagens() {
 		ImageIcon ref1 = new ImageIcon("res\\Suspeitos\\Green.jpg");

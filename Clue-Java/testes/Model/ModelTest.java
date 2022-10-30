@@ -9,5 +9,6 @@ import org.junit.runners.*;
 	JogadorTest.class,
 	CartasTest.class,
 	SuspeitaTest.class,
+	TabuleiroTest.class,
 })
 public class ModelTest {}

@@ -4,13 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Controller.*;
-import Model.Jogador;
+import Model.ModelAPI;
 
+@SuppressWarnings("serial")
 public class Tabuleiro extends JPanel {
 	private Image tabuleiro;
 	private Image dado1;
@@ -21,24 +20,17 @@ public class Tabuleiro extends JPanel {
 	ImageIcon refd1;
 	ImageIcon refd2;
 	
-	Color red = new Color(136, 8, 8);
-	Color yellow = new Color(239,255,45);
-	Color white = new Color(255,255,255);
-	Color blue = new Color(39, 39, 255);
-	Color green = new Color(17, 254, 13);
-	Color purple = new Color(128, 0, 128);
-	
 	public Tabuleiro() { }
 	
-	public Tabuleiro(Jogador jogador, int d1, int d2, int x , int y, Controller c) {
-				
+	public Tabuleiro(String piao, int d1, int d2, int x , int y) {
+		/*tabuleiro*/
 		ImageIcon ref = new ImageIcon("res\\Tabuleiros\\Tabuleiro-Clue-A.jpg");
 		tabuleiro = ref.getImage();
 		
+		/*dados*/
 		if(d1 == 0) {
 			refd1 = new ImageIcon("res\\Tabuleiros\\dado1.jpg");
-		}
-		else if(d1 == 1) {
+		}else if(d1 == 1) {
 			refd1 = new ImageIcon("res\\Tabuleiros\\dado1.jpg");
 		}else if(d1 == 2) {
 			refd1 = new ImageIcon("res\\Tabuleiros\\dado2.jpg");
@@ -55,8 +47,7 @@ public class Tabuleiro extends JPanel {
 		
 		if(d2 == 0) {
 			refd2 = new ImageIcon("res\\Tabuleiros\\dado1.jpg");
-		}
-		else if(d2 == 1) {
+		}else if(d2 == 1) {
 			refd2 = new ImageIcon("res\\Tabuleiros\\dado1.jpg");
 		}else if(d2 == 2) {
 			refd2 = new ImageIcon("res\\Tabuleiros\\dado2.jpg");
@@ -71,36 +62,24 @@ public class Tabuleiro extends JPanel {
 		}
 		dado2 = refd2.getImage();
 		
-
+		/*piões*/
 		if(x!=0 && y!=0) {
-			String nome = jogador.personagem; 
-			if(nome == "Sra. White") {
-				coordenadas[0][0] = x;
-				coordenadas[0][1] = y;
-			}
-			else if(nome == "Reverendo Green") {
-				coordenadas[1][0] = x;
-				coordenadas[1][1] = y;
-			}
-			else if(nome == "Sra. Peacock") {
-				coordenadas[2][0] = x;
-				coordenadas[2][1] = y;
-			}
-			else if(nome == "Coronel Mustard") {
-				coordenadas[3][0] = x;
-				coordenadas[3][1] = y;
-			}
-			else if(nome == "Srta. Scarlet") {
-				coordenadas[4][0] = x;
-				coordenadas[4][1] = y;
-			}
-			else if(nome == "Professor Plum") {
-				coordenadas[5][0] = x;
-				coordenadas[5][1] = y;
+			if(piao == "Sra. White") {
+				coordenadas[0][0] = x; coordenadas[0][1] = y;
+			}else if(piao == "Reverendo Green") {
+				coordenadas[1][0] = x; coordenadas[1][1] = y;
+			}else if(piao == "Sra. Peacock") {
+				coordenadas[2][0] = x; coordenadas[2][1] = y;
+			}else if(piao == "Coronel Mustard") {
+				coordenadas[3][0] = x; coordenadas[3][1] = y;
+			}else if(piao == "Srta. Scarlet") {
+				coordenadas[4][0] = x; coordenadas[4][1] = y;
+			}else if(piao == "Professor Plum") {
+				coordenadas[5][0] = x; coordenadas[5][1] = y;
 			}
 		}
-		
-		c.atualizaPosicoes(coordenadas);
+		ModelAPI modelAPI = ModelAPI.getInstancia();
+		modelAPI.atualizaPosicoes(coordenadas);
 	}
 	
 	public void paint(Graphics g) {
@@ -109,22 +88,22 @@ public class Tabuleiro extends JPanel {
 		graficos.drawImage(dado1, 850, 500, null);
 		graficos.drawImage(dado2, 940, 500, null);
 		
-		graficos.setColor(white);
+		graficos.setColor(Color.WHITE);
 		graficos.fillOval(coordenadas[0][0]-3, coordenadas[0][1]-3, 10, 10);
 		
-		graficos.setColor(green);
+		graficos.setColor(Color.GREEN);
 		graficos.fillOval(coordenadas[1][0]-3, coordenadas[1][1]-3, 10, 10);
 		
-		graficos.setColor(blue);
+		graficos.setColor(Color.BLUE);
 		graficos.fillOval(coordenadas[2][0]-3, coordenadas[2][1]-3, 10, 10);
 		
-		graficos.setColor(yellow);
+		graficos.setColor(Color.YELLOW);
 		graficos.fillOval(coordenadas[3][0]-3, coordenadas[3][1]-3, 10, 10);
 		
-		graficos.setColor(red);
+		graficos.setColor(Color.RED);
 		graficos.fillOval(coordenadas[4][0]-3, coordenadas[4][1]-3, 10, 10);
 		
-		graficos.setColor(purple);
+		graficos.setColor(Color.MAGENTA);
 		graficos.fillOval(coordenadas[5][0]-3, coordenadas[5][1]-3, 10, 10);
 		g.dispose();
 	}

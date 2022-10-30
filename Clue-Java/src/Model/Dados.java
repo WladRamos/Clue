@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Random;
 
-public class Dados {
+class Dados {
 	public int dado1;
 	public int dado2;
 	

@@ -1,89 +1,47 @@
 package Controller;
 
-import java.util.Arrays;
-
-import Model.*;
+import Model.ModelAPI;
 
 public class Controller {
-	static protected Jogador[] jogadores;
-	static protected int nJog;
-	static private  int vez = 0;
+	static protected String[] jogadores;
+	static private int jogada = 0;
+	ModelAPI modelAPI = ModelAPI.getInstancia();
 	
 	public void Jogar(String[] personagens, int numeroJogadores) {
-
-        System.out.println(Arrays.toString(personagens));
-        nJog = numeroJogadores;
-        Cartas cartas = new Cartas();
-        jogadores = new Jogador[numeroJogadores];
-
-        for(int i=0; i<numeroJogadores; i++) {
-            jogadores[i] = new Jogador(personagens[i], numeroJogadores);
-            int ncartas = jogadores[i].numCartas;
-            jogadores[i].recebeCartas(ncartas, cartas.DistribuiCartas(ncartas));
-        }
+		jogadores = new String[numeroJogadores];
+		System.arraycopy(personagens,0,jogadores,0,numeroJogadores); 
+		modelAPI.criaJogadores(personagens, numeroJogadores);
+		
     }
 	
-	private Jogador setVez() {
-        if(vez==nJog-1) vez=-1;
-        vez++;
-        return jogadores[vez];
+	private void setJogada() {
+        if(jogada==jogadores.length-1) jogada=-1;
+        jogada++;
     }
-	
-	public Jogador getProximoJogador() {
-		Jogador jogador = setVez();
-		int allBlocked=0;
-		while(jogador.block) {
-			jogador = setVez();
-			allBlocked++;
-			if(allBlocked==nJog) return null;
-		} return jogador;
-	}
-	
-	public Jogador getJogadorDaVez() {
-		System.out.println("jogador da vez"+jogadores[vez].personagem);
-		return jogadores[vez];
-	}
 	
 	public void setPrimeiroJogador() {
-		int scarlet=0;
-		for(Jogador j: jogadores) {
-			if(j.personagem == "Srta. Scarlet") {
-				vez=scarlet;
-				break;
-			}
-			scarlet++;
+		for(String jogador: jogadores) {
+			if(jogador == "Srta. Scarlet") break;
+			setJogada();
 		}
-		System.out.println("vez"+vez);
-	}
-
-	public boolean passagemSecreta(int x, int y) {
-		return false;
-		//TODO
-		//Tabuleiro.tabuleiroToMatrix(x,y);
 	}
 	
-	public int getDestinoPassagemSecretaX(Jogador jogador) {
-		return 564;
-		//TODO
+	public String getJogadorDaVez() {
+		return jogadores[jogada];
 	}
 	
-	public int getDestinoPassagemSecretaY(Jogador jogador) {
-		return 565;
-		//TODO
-	}
-	public void atualizaPosicoes(int[][] coordenadas) {
-		/*coordenadas: "Sra. White" (white), "Reverendo Green" (green), "Sra. Peacock" (blue),
-		"Coronel Mustard" (yellow), "Srta. Scarlet" (red), "Professor Plum" (pink)*/
-		//TODO
+	public int getJogadorDaVezId() {
+		return jogada;
 	}
 	
-	public boolean permissaoMover(Jogador j, int x, int y, int passos) {
-		return true;
-		//Tabuleiro tabuleiro = Tabuleiro.getInstancia();
-		//return tabuleiro.movePiao(...);
+	public boolean proximoJogador() {
+		int blocked=0;
+		setJogada();
+		while(modelAPI.jogadorBloqueado(jogada)) {
+			setJogada(); blocked++;
+			if(blocked==jogadores.length) return false;
+		}return true;
+	}
 		
-	}
-	
-	
 }
 

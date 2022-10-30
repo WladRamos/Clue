@@ -10,12 +10,8 @@ class Suspeita {
 	}
 	
 	boolean DarPalpite(String localAtual) {
-		//check if the player is in the indicated room, if not ask again for the guess
 		if(localAtual!=comodo) return false;
-		//if yes
-			//bring weapon to the room (graphic)
-			//if suspect is not in the room, bring it to the room(graphic)
-			return true;
+		return true;
 	}
 	
 	boolean confirmarPalpite(Jogador JogadorDaVez, Jogador [] jogadores) {
@@ -36,11 +32,10 @@ class Suspeita {
 	}
 	
 	boolean fazerAcusacao(Jogador jogador) {
-		Cartas c = new Cartas();
+		Cartas c = Cartas.getInstancia();
 		if(arma==c.getEnvelope()[0] && suspeito==c.getEnvelope()[1] && comodo==c.getEnvelope()[2]) {
 			return true;
 		}
-		//show the player the correct answer (graphic)
 		jogador.setBlock();
 		return false;
 	}

@@ -18,7 +18,6 @@ public class DadosTest {
 	public void testJogaDados() {
 		Dados dados = new Dados();
 		int jogada = dados.jogaDados();
-		
 		assertEquals("soma dos dados errada",dados.dado1+dados.dado2,jogada);
 		assertTrue("soma dos dados inválida",jogada >0 && jogada <=12);
 	}

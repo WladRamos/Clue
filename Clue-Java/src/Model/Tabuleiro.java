@@ -1,11 +1,11 @@
 package Model;
 
-public class Tabuleiro {
+class Tabuleiro {
 	static Tabuleiro tabuleiroInstancia;
-	private int tabuleiro [][] = new int[561][2];
+	private static int tabuleiro [][] = new int[27][26];
 		
-	/*dictionary of matrix areas*/
-	private int coordCasas[][] = {{9, 2}, {10, 2}, {11, 2}, {16, 2}, {17, 2}, {18, 2}, {8, 3}, {9, 3}, {18, 3}, {19, 3}, {8, 4}, {9, 4}, {18, 4}, {19, 4}, {8, 5}, {9, 5}, {18, 5}, {19, 5}, {8, 6}, {9, 6}, {18, 6}, {19, 6}, {20, 6}, {8, 7}, {9, 7}, {18, 7}, {19, 7}, {20, 7}, {21, 7}, {22, 7}, {23, 7}, {24, 7}, {2, 8}, {3, 8}, {4, 8}, {5, 8}, {6, 8}, {7, 8}, {8, 8}, {9, 8}, {18, 8}, {19, 8}, {20, 8}, {21, 8}, {22, 8},{23, 8}, {24, 8}, {3, 9}, {4, 9}, {5, 9}, {6, 9}, {7, 9}, {8, 9}, {9, 9}, {10, 9}, {11, 9}, {12, 9}, {13, 9}, {14, 9}, {15, 9}, {16, 9}, {17, 9}, {18, 9}, {19, 9}, {7, 10}, {8, 10}, {9, 10}, {10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}, {10, 11}, {11, 11}, {17, 11}, {18, 11}, {19, 11}, {10, 12}, {11, 12}, {17, 12}, {18, 12}, {19, 12}, {10, 13}, {11, 13}, {17, 13}, {18, 13}, {19, 13}, {10, 14}, {11, 14}, {17, 14}, {18, 14}, {19, 14}, {20, 14}, {21, 14}, {22, 14}, {23, 14}, {24, 14}, {10, 15}, {11, 15}, {17, 15}, {18, 15}, {19, 15}, {10, 16}, {11, 16}, {18, 16}, {3, 17}, {4, 17}, {5, 17}, {7, 17}, {8, 17}, {10, 17}, {11, 17}, {17, 17}, {18, 17}, {3, 18}, {9, 18}, {10, 18}, {13, 18}, {15, 18}, {16, 18}, {17, 18}, {18, 18}, {3, 19}, {4, 19}, {7, 19}, {8, 19}, {9, 19}, {10, 19}, {19, 19}, {9, 20}, {10, 20}, {19, 20}, {22, 20}, {23, 20}, {24, 20}, {9, 21}, {10, 21}, {17, 21}, {18, 21}, {20, 21}, {21, 21}, {22, 21}, {23, 21}, {24, 21}, {9, 22}, {10, 22}, {17, 22}, {18, 22}, {9, 23}, {10, 23}, {17, 23}, {18, 23}, {9, 24}, {10, 24}, {17, 24}, {18, 24}, {18, 25},};
+	/*dicionário das áreas da matriz tabuleiro*/
+	private int coordCasas[][] = {{6, 16},{2, 18},{25, 7},{25, 20},{9, 25},{11, 1},{9, 2}, {8, 18}, {7, 18}, {6, 18},{5, 18},{4, 18},{3, 18},{10, 2}, {11, 2}, {16, 2}, {17, 2}, {18, 2}, {8, 3}, {9, 3}, {18, 3}, {19, 3}, {8, 4}, {9, 4}, {18, 4}, {19, 4}, {8, 5}, {9, 5}, {18, 5}, {19, 5}, {8, 6}, {9, 6}, {18, 6}, {19, 6}, {20, 6}, {8, 7}, {9, 7}, {18, 7}, {19, 7}, {20, 7}, {21, 7}, {22, 7}, {23, 7}, {24, 7}, {2, 8}, {3, 8}, {4, 8}, {5, 8}, {6, 8}, {7, 8}, {8, 8}, {9, 8}, {18, 8}, {19, 8}, {20, 8}, {21, 8}, {22, 8},{23, 8}, {24, 8}, {3, 9}, {4, 9}, {5, 9}, {6, 9}, {7, 9}, {8, 9}, {9, 9}, {10, 9}, {11, 9}, {12, 9}, {13, 9}, {14, 9}, {15, 9}, {16, 9}, {17, 9}, {18, 9}, {19, 9}, {7, 10}, {8, 10}, {9, 10}, {10, 10}, {11, 10}, {12, 10}, {13, 10}, {14, 10}, {15, 10}, {16, 10}, {17, 10}, {18, 10}, {19, 10}, {10, 11}, {11, 11}, {17, 11}, {18, 11}, {19, 11}, {10, 12}, {11, 12}, {17, 12}, {18, 12}, {19, 12}, {10, 13}, {11, 13}, {17, 13}, {18, 13}, {19, 13}, {10, 14}, {11, 14}, {17, 14}, {18, 14}, {19, 14}, {20, 14}, {21, 14}, {22, 14}, {23, 14}, {24, 14}, {10, 15}, {11, 15}, {17, 15}, {18, 15}, {19, 15}, {10, 16}, {11, 16}, {18, 16}, {3, 17}, {4, 17}, {5, 17}, {7, 17}, {8, 17}, {10, 17}, {11, 17}, {17, 17}, {18, 17}, {3, 18}, {9, 18}, {10, 18}, {13, 18}, {15, 18}, {16, 18}, {17, 18}, {18, 18}, {3, 19}, {4, 19}, {7, 19}, {8, 19}, {9, 19}, {10, 19}, {19, 19}, {9, 20}, {10, 20}, {19, 20}, {22, 20}, {23, 20}, {24, 20}, {9, 21}, {10, 21}, {17, 21}, {18, 21}, {20, 21}, {21, 21}, {22, 21}, {23, 21}, {24, 21}, {9, 22}, {10, 22}, {17, 22}, {18, 22}, {9, 23}, {10, 23}, {17, 23}, {18, 23}, {9, 24}, {10, 24}, {17, 24}, {18, 24}, {18, 25},};
 	private int coordCozinha[][] = {{2, 1}, {3, 1}, {4, 1}, {5, 1}, {6, 1}, {7, 1}, {2, 2}, {3, 2}, {4, 2}, {5, 2}, {6, 2}, {7, 2}, {2, 3}, {3, 3}, {4, 3}, {5, 3}, {6, 3}, {7, 3}, {2, 4}, {3, 4}, {4, 4}, {5, 4}, {6, 4}, {7, 4}, {2, 5}, {3, 5}, {4, 5}, {5, 5}, {6, 5}, {7, 5}, {2, 6}, {3, 6}, {4, 6}, {5, 6}, {6, 6}, {7, 6}, {3, 7}, {4, 7}, {5, 7}, {6, 7}, {7, 7}};
 	private int portasCozinha[][] = {{6, 8}};
 	private int coordSalaDeJantar[][] = {{2, 9}, {3, 9}, {4, 9}, {5, 9}, {6, 9}, {7, 9}, {8, 9}, {9, 9}, {2, 10}, {3, 10}, {4, 10}, {5, 10}, {6, 10}, {2, 11}, {3, 11}, {4, 11}, {5, 11}, {6, 11}, {7, 11}, {8, 11}, {9, 11}, {2, 12}, {3, 12}, {4, 12}, {5, 12}, {6, 12}, {7, 12}, {8, 12}, {9, 12}, {2, 13}, {3, 13}, {4, 13}, {5, 13}, {6, 13}, {7, 13}, {8, 13}, {9, 13}, {2, 14}, {3, 14}, {4, 14}, {5, 14}, {6, 14}, {7, 14}, {8, 14}, {9, 14}, {2, 15}, {3, 15}, {4, 15}, {5, 15}, {6, 15}, {7, 15}, {8, 15}, {9, 15}, {2, 16}, {3, 16}, {4, 16}, {5, 16}, {6, 16}, {7, 16}, {8, 16}, {9, 16}};
@@ -26,6 +26,13 @@ public class Tabuleiro {
 	private int portasEscritorio[][] = {{19, 21}};
 	private String[] areas = {"Casas Comuns", "Cozinha", "Sala de Jantar", "Sala de Estar", "Sala de Música", "Entrada", "Jardim de Inverno", "Salão de Jogos", "Escritório", "Biblioteca"};
 	
+	/*inicializando tabuleiro vazio*/
+	static{	
+		for(int x=0;x<27;x++) {
+			for(int y=0;y<26;y++) tabuleiro[x][y]=0;
+		}
+	}
+	
 	/*singleton class*/
 	private Tabuleiro() {
 	}
@@ -39,30 +46,26 @@ public class Tabuleiro {
 		return tabuleiro;
 	}
 	
-	public void ocupaPosicao(int x, int y, int jogador) {
+	protected void ocupaPosicao(int x, int y, int jogador) {
 		tabuleiro[x][y] = jogador;
 	}
 	
-	public void liberaPosicao(int x, int y) {
+	protected void liberaPosicao(int x, int y) {
 		tabuleiro[x][y] = 0;
 	}
 	
-	public boolean posicaoLivre(int x, int y) {
+	protected boolean posicaoLivre(int x, int y) {
 		if(tabuleiro[x][y]==0) return true;
 		return false;
 	}
-	
-	public int MouseCoordToMatrixCoord(int coord) {
-		return coord/25;
-	}
-	
+		
 	private boolean pertence(int x, int y, int[][] area) {
 		for(int[] coord: area) {
 			if(coord[0]==x && coord[1]==y) return true;
 		}return false;
 	}
 	
-	public String getAreaDoTabuleiro(int x, int y) {
+	protected String getAreaDoTabuleiro(int x, int y) {
 		if(pertence(x, y, coordCasas)) return areas[0];
 		if(pertence(x, y, coordCozinha)) return areas[1];
 		if(pertence(x, y, coordSalaDeJantar)) return areas[2];
@@ -76,24 +79,27 @@ public class Tabuleiro {
 		return "àrea inválida";
 	}
 	
-	private int[] getPortaMaisProxima(int x, int y, String destino) {
+	protected int[] getPortaMaisProxima(int x, int y, String destino, int jogador) {
 		int[][] portas;
 		if(destino==areas[1]) portas = portasCozinha;
-		if(destino==areas[2]) portas = portasSalaDeJantar;
-		if(destino==areas[3]) portas = portasSalaDeEstar;
-		if(destino==areas[4]) portas = portasSalaDeMusica;
-		if(destino==areas[5]) portas = portasEntrada;
-		if(destino==areas[6]) portas = portasJardimDeInverno;
-		if(destino==areas[7]) portas = portasSalaoDeJogos;
-		if(destino==areas[8]) portas = portasEscritorio;
+		else if(destino==areas[2]) portas = portasSalaDeJantar;
+		else if(destino==areas[3]) portas = portasSalaDeEstar;
+		else if(destino==areas[4]) portas = portasSalaDeMusica;
+		else if(destino==areas[5]) portas = portasEntrada;
+		else if(destino==areas[6]) portas = portasJardimDeInverno;
+		else if(destino==areas[7]) portas = portasSalaoDeJogos;
+		else if(destino==areas[8]) portas = portasEscritorio;
 		else portas = portasBiblioteca;
-		
+
 		if(portas.length==1) return portas[0];
-		int menorDistancia=-1;
+		int menorDistancia=1000;
 		int portaMaisProxima[] = null;
 		for(int[] porta: portas) { 
-			if(posicaoLivre(porta[0], porta[1])) {
+			if(posicaoLivre(porta[0], porta[1]) || tabuleiro[porta[0]][porta[1]]==jogador) {
+				System.out.println("porta: "+porta[0]+", "+porta[1]);
+				System.out.println("piao: "+x+", "+y);
 				int distancia = Math.abs(porta[0]-x) + Math.abs(porta[1]-y);
+				System.out.println("distancia: "+distancia);
 				if(distancia<menorDistancia) {
 					menorDistancia = distancia;
 					portaMaisProxima = porta;
@@ -102,32 +108,47 @@ public class Tabuleiro {
 		}return portaMaisProxima;
 	}
 	
-	public boolean movePiao(int x0, int y0, int x1, int y1, int passos, int jogador) {
+	protected boolean movePiao(int x0, int y0, int x1, int y1, int passos, int jogador) {
 		String origem = getAreaDoTabuleiro(x0, y0);
 		String destino = getAreaDoTabuleiro(x1, y1);
-		
+		System.out.printf("origem: %s - destino: %s\n", origem, destino);
 		if(destino=="àrea inválida") return false;
+		System.out.println("area não inválida");
 		if(!posicaoLivre(x1, y1)) return false;
+		System.out.println("posição livre");
 		
 		int distancia;
-		if(origem=="Casas Comuns") {
-			if(destino=="Casas Comuns") distancia = Math.abs(x0-x1) + Math.abs(y0-y1);
-			else {	/*destino é um dos comodos*/
-				int[] porta = getPortaMaisProxima(x0, y0, destino);
-				if(porta==null) return false;
-				distancia = Math.abs(x0-porta[0]) + Math.abs(y0-porta[1]);
+		if(origem=="Casas Comuns" || origem=="àrea inválida") {
+			System.out.println("origem: casas comuns");
+			if(destino=="Casas Comuns") {
+				distancia = Math.abs(x0-x1) + Math.abs(y0-y1);
+				System.out.println("destino: casas comuns");
 			}
+			else {	/*destino é um dos comodos*/
+				int[] porta = getPortaMaisProxima(x0, y0, destino, jogador);
+				if(porta==null) return false;
+				System.out.println("porta: "+porta[0]+", "+porta[1]);
+				distancia = Math.abs(x0-porta[0]) + Math.abs(y0-porta[1]) +1;
+				System.out.println("destino: comodos");
+			}
+
+			System.out.println("distancia: "+distancia);
 			if(distancia<=passos) {
+				System.out.println("distancia <= passos");
 				ocupaPosicao(x1, y1, jogador);
 				liberaPosicao(x0,y0);
 				return true;
 			}else return false;
 		}else {	/*origem é um dos comodos*/
+			System.out.println("origem: comodos");
 			if(destino=="Casas Comuns"){
-				int[] porta = getPortaMaisProxima(x1, y1, origem);
+				System.out.println("destino: casas comuns");
+				int[] porta = getPortaMaisProxima(x1, y1, origem, jogador);
 				if(porta==null) return false;
+				System.out.println("porta: "+porta[0]+", "+porta[1]);
 				distancia = Math.abs(x1-porta[0]) + Math.abs(y1-porta[1]);
 			}else {	/*destino é um dos comodos*/
+				System.out.println("destino: comodos");
 				/*passagens secretas*/
 				if((origem=="Cozinha" && destino=="Escritório")||(destino=="Cozinha" && origem=="Escritório")
 					||(origem=="Jardim de Inverno" && destino=="Sala de Estar")||(destino=="Jardim de Inverno" && origem=="Sala de Estar")) {
@@ -135,36 +156,39 @@ public class Tabuleiro {
 					liberaPosicao(x0,y0);
 					return true;
 				}else {	/*comodo para comodo sem passagens secretas*/
-					int[] porta1 = getPortaMaisProxima(x0, y0, destino);
-					int[] porta2 = getPortaMaisProxima(x1, y1, origem);
+					int[] porta1 = getPortaMaisProxima(x0, y0, destino, jogador);
+					int[] porta2 = getPortaMaisProxima(x1, y1, origem, jogador);
 					if(porta1==null || porta2==null) return false;
-					distancia = Math.abs(porta1[0]-porta2[0]) + Math.abs(porta1[1]-porta2[1]);
-					if(distancia<=passos) {
-						ocupaPosicao(x1, y1, jogador);
-						liberaPosicao(x0,y0);
-						return true;
-					}else return false;
+					distancia = Math.abs(porta1[0]-porta2[0]) + Math.abs(porta1[1]-porta2[1]) +1;
 				}
 			}
-		}return false;
+			System.out.println("distancia: "+distancia);
+			if(distancia<=passos) {
+				ocupaPosicao(x1, y1, jogador);
+				liberaPosicao(x0,y0);
+				return true;
+			}else return false;
+		}
 	}
 	
-	public boolean permissaoPassagemSecreta(int x, int y) {
+	protected boolean permissaoPassagemSecreta(int x, int y) {
 		String comodo = getAreaDoTabuleiro(x, y);
 		if(comodo=="Cozinha"||comodo=="Escritório"||comodo=="Jardim de Inverno"||comodo=="Sala de Estar") 
 			return true;
 		return false;
 	}
 	
-	public void movePiaoPassagemSecreta(int x, int y, int jogador) {
+	protected int[] movePiaoPassagemSecreta(int x, int y, int jogador) {
 		String comodo = getAreaDoTabuleiro(x, y);
 		int x1=0, y1=0;
 		if(comodo=="Cozinha") { x1 = 22; y1 = 24; }
 		else if(comodo=="Escritório") { x1 = 4; y1 = 4; }
 		else if(comodo=="Jardim de Inverno") { x1 = 6; y1 = 23; }
-		else if(comodo=="Sala de Estar") { x1 = 23; y1 = 25; }
+		else if(comodo=="Sala de Estar") { x1 = 24; y1 = 3; }
 		ocupaPosicao(x1, y1, jogador);
 		liberaPosicao(x,y);
+		int[] coordenadas = {x1,y1};
+		return coordenadas;
 	}
 	
 }

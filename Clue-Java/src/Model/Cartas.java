@@ -1,9 +1,9 @@
 package Model;
 
 import java.util.Random;
-import java.util.Arrays;
 
-public class Cartas{
+class Cartas{
+	static Cartas cartasInstancia = null;
 	private static String[] cartasArmas = {"Corda", "Cano de Chumbo", "Faca", "Chave Inglesa", "Castiçal", "Revólver"};
 	private static String[] cartasSuspeitos = {"Coronel Mustard", "Srta. Scarlet", "Professor Plum", "Reverendo Green", "Sra. White", "Sra. Peacock"};
 	private static String[] cartasComodos = {"Entrada", "Sala de Estar", "Sala de Jantar", "Cozinha", "Sala de Música", "Jardim de Inverno", "Salão de Jogos", "Biblioteca", "Escritório"};
@@ -25,6 +25,15 @@ public class Cartas{
 	    cartasComodos[index3] = "0";
 	}
 	
+	/*singleton class*/
+	private Cartas() {
+	}
+	
+	public static Cartas getInstancia() {
+		if(cartasInstancia == null) cartasInstancia = new Cartas();
+		return cartasInstancia; 
+	}
+	
 	public String[] getEnvelope() {
 		return envelopeConfidencial;
 	}
@@ -41,16 +50,7 @@ public class Cartas{
 		return cartasSuspeitos;
 	}
 	
-	public String[] DistribuiCartas(int numCartas){
-		/*try {
-			if(numCartas<3 || numCartas>6) { 
-				throw new ValorInvalido("número de cartas inválido para jogador");
-			}
-		}catch(ValorInvalido vi) {
-			//System.exit(1);
-			System.out.println("número de cartas inválido para jogador");
-			return null;
-		}*/
+	protected String[] DistribuiCartas(int numCartas){
 		String[] baralho = new String[cartasArmas.length + cartasSuspeitos.length + cartasComodos.length];
 		String[] maoJogador = new String[numCartas];
 		Random x = new Random();
@@ -59,8 +59,6 @@ public class Cartas{
 		System.arraycopy(cartasArmas, 0, baralho, 0, cartasSuspeitos.length);
 		System.arraycopy(cartasSuspeitos, 0, baralho, cartasArmas.length, cartasSuspeitos.length);
 		System.arraycopy(cartasComodos, 0, baralho, cartasArmas.length + cartasSuspeitos.length, cartasComodos.length);
-		
-		//System.out.println("Concatenated Array: " + Arrays.toString(baralho));
 			
 		for(int i=0;i<numCartas;i++) {
 			do {
@@ -87,14 +85,12 @@ public class Cartas{
 				}
 			}
 			baralho[a] = "0";
-		}
-			
-		//System.out.println("Mao jogador: " + Arrays.toString(maoJogador));
-		
+		}		
 		return maoJogador;
 	}
 	
-	public void reiniciaCartas() {
+	/*método criado apenas para testes*/
+	protected static void reiniciaCartas() {
 		String[] armas = {"Corda", "Cano de Chumbo", "Faca", "Chave Inglesa", "Castiçal", "Revólver"};
 		String[] suspeitos = {"Coronel Mustard", "Srta. Scarlet", "Professor Plum", "Reverendo Green", "Sra. White", "Sra. Peacock"};
 		String[] comodos = {"Entrada", "Sala de Estar", "Sala de Jantar", "Cozinha", "Sala de Música", "Jardim de Inverno", "Salão de Jogos", "Biblioteca", "Escritório"};

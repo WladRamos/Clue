@@ -8,8 +8,8 @@ public class CartasTest {
 
 	@Test
 	public void testgetEnvelope() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] envelope = cartas.getEnvelope();
 		
 		assertEquals("quantidade de cartas no evelope errada",3,envelope.length);
@@ -18,8 +18,8 @@ public class CartasTest {
 	
 	@Test
 	public void testgetCartasArmas() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] armas = cartas.getCartasArmas();
 		int envelope=0;
 		
@@ -32,8 +32,8 @@ public class CartasTest {
 	
 	@Test
 	public void testgetCartasSuspeitos() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] sus = cartas.getCartasSuspeitos();
 		int envelope=0;
 		
@@ -46,8 +46,8 @@ public class CartasTest {
 	
 	@Test
 	public void testgetCartasComodos() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] comodo = cartas.getCartasComodos();
 		int envelope=0;
 		
@@ -60,8 +60,8 @@ public class CartasTest {
 
 	@Test
 	public void testDistribuiCartasCom3() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] maoCom3 = cartas.DistribuiCartas(3);
 		
 		assertEquals("quantidade de cartas distribuídas errada",3,maoCom3.length);
@@ -70,8 +70,8 @@ public class CartasTest {
 	
 	@Test
 	public void testDistribuiCartasCom4() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] maoCom4 = cartas.DistribuiCartas(4);
 		
 		assertEquals("quantidade de cartas distribuídas errada",4,maoCom4.length);
@@ -80,8 +80,8 @@ public class CartasTest {
 	
 	@Test
 	public void testDistribuiCartasCom5() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] maoCom5 = cartas.DistribuiCartas(5);		
 		
 		assertEquals("quantidade de cartas distribuídas errada",5,maoCom5.length);
@@ -90,8 +90,8 @@ public class CartasTest {
 	
 	@Test
 	public void testDistribuiCartasCom6() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] maoCom6 = cartas.DistribuiCartas(6);
 		
 		assertEquals("quantidade de cartas distribuídas errada",6,maoCom6.length);
@@ -100,8 +100,8 @@ public class CartasTest {
 	
 	@Test
 	public void testDistribuiCartasSemSobrarBaralho() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		cartas.DistribuiCartas(6);
 		cartas.DistribuiCartas(6);
 		cartas.DistribuiCartas(6);
@@ -125,8 +125,8 @@ public class CartasTest {
 	
 	@Test
 	public void testDistribuiCartasSemRepeticao() {
-		Cartas cartas = new Cartas();
-		cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
 		String[] maoJog1 = cartas.DistribuiCartas(6);
 		String[] maoJog2 = cartas.DistribuiCartas(6);
 		String[] maoJog3 = cartas.DistribuiCartas(6);
