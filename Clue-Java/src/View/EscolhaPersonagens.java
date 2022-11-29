@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class EscolhaPersonagens extends JPanel {
+class EscolhaPersonagens extends JPanel {
 	private Image green, mustard, peacock, plum, scarlet, white;
 	
 	public EscolhaPersonagens() {

@@ -104,6 +104,16 @@ public class JogadorTest {
 	}
 	
 	@Test
+	public void testgetCartasBlocoNotas() {
+		Cartas.reiniciaCartas();
+		Cartas cartas = Cartas.getInstancia();
+		Jogador jogador = new Jogador("Sra. White", 6);
+		assertEquals("quantidade de cartas incorreta",3,jogador.getCartasBlocoNotas().length);
+		jogador.marcaBlocoNotas(cartas.getEnvelope()[0]);
+		assertEquals("carta nova não foi marcada no bloco",4,jogador.getCartasBlocoNotas().length);
+	}
+	
+	@Test
 	public void testsetBlock() {
 		Cartas.reiniciaCartas();
 		Jogador jogador = new Jogador("Sra. White", 6);
@@ -111,4 +121,28 @@ public class JogadorTest {
 		assertTrue("bloqueio não feito",jogador.block);
 	}
 
+	@Test
+	public void testcriaJogador() {
+		Jogador jogador = new Jogador("Sra. White", 6);
+		int id = 1;
+		int ncartas = 3;
+		String persongm = "Sra. White";
+		String[] cards = {"Faca", "Coronel Mustard", "Cozinha"};
+		String [][] bn = {{"Corda","0"},{"Cano de Chumbo","0"},{"Faca","1"},{"Chave Inglesa","0"},{"Castiçal","0"},{"Revólver","0"},{"Coronel Mustard","1"},{"Srta. Scarlet","0"},{"Professor Plum","0"},{"Reverendo Green","0"},{"Sra. White","0"},{"Sra. Peacock","0"},{"Entrada","0"},{"Sala de Estar","0"},{"Sala de Jantar","0"},{"Cozinha","1"},{"Sala de Música","0"},{"Jardim de Inverno","0"},{"Salão de Jogos","0"},{"Biblioteca","0"},{"Escritório","0"}};
+		String ultimoCmd = "Sala de Música";
+		boolean bloq = false;
+		int x_ = 10, y_ = 2;
+		
+		jogador.criaJogador(id, ncartas, persongm, cards, bn, ultimoCmd, bloq, x_, y_);
+		
+		assertEquals(jogador.identificador, id);
+		assertEquals(jogador.numCartas, ncartas);
+		assertEquals(jogador.personagem, persongm);
+		assertArrayEquals(jogador.getCartas(), cards);
+		assertArrayEquals(jogador.getBlocoNotas(), bn);
+		assertEquals(jogador.ultimoComodo, ultimoCmd);
+		assertEquals(jogador.block, bloq);
+		assertEquals(jogador.x, x_);
+		assertEquals(jogador.y, y_);
+	}
 }

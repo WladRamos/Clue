@@ -1,7 +1,6 @@
 package Model;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class CartasTest {
@@ -148,4 +147,15 @@ public class CartasTest {
 		assertEquals("há cartas repedidas entre os jogadores",0,erros);
 	}
 
+	@Test
+	public void testSetCartas() {
+		String[] env = {"Faca", "Srta. Scarlet", "Sala de Estar"};
+		Cartas cartas = Cartas.getInstancia();
+		Cartas.reiniciaCartas();
+		Cartas.setCartas(env);
+		
+		String[] res = cartas.getEnvelope();
+		
+		assertArrayEquals(env, res);
+	}
 }

@@ -23,6 +23,8 @@ class Cartas{
 		cartasArmas[index1] = "0";
 	  	cartasSuspeitos[index2] = "0";
 	    cartasComodos[index3] = "0";
+	    
+	    System.out.println("envelope de primeira instância: "+envelopeConfidencial[0] + " " + envelopeConfidencial[1] + " " + envelopeConfidencial[2]);
 	}
 	
 	/*singleton class*/
@@ -63,23 +65,23 @@ class Cartas{
 		for(int i=0;i<numCartas;i++) {
 			do {
 				a = x.nextInt(baralho.length);
-			}while(baralho[a] == "0");
+			}while(baralho[a].equals("0"));
 			maoJogador[i] = baralho[a];
 			
 			for(int j=0;j<cartasArmas.length;j++) {
-				if(cartasArmas[j] == baralho[a]) {
+				if(cartasArmas[j].equals(baralho[a])) {
 					cartasArmas[j] = "0";
 					break;
 				}
 			}
 			for(int k=0;k<cartasSuspeitos.length;k++) {
-				if(cartasSuspeitos[k] == baralho[a]) {
+				if(cartasSuspeitos[k].equals(baralho[a])) {
 					cartasSuspeitos[k] = "0";
 					break;
 				}
 			}
 			for(int l=0;l<cartasComodos.length;l++) {
-				if(cartasComodos[l] == baralho[a]) {
+				if(cartasComodos[l].equals(baralho[a])) {
 					cartasComodos[l] = "0";
 					break;
 				}
@@ -89,7 +91,7 @@ class Cartas{
 		return maoJogador;
 	}
 	
-	/*método criado apenas para testes*/
+	/*método para reinicio de jogo*/
 	protected static void reiniciaCartas() {
 		String[] armas = {"Corda", "Cano de Chumbo", "Faca", "Chave Inglesa", "Castiçal", "Revólver"};
 		String[] suspeitos = {"Coronel Mustard", "Srta. Scarlet", "Professor Plum", "Reverendo Green", "Sra. White", "Sra. Peacock"};
@@ -112,5 +114,24 @@ class Cartas{
 		cartasArmas[index1] = "0";
 	  	cartasSuspeitos[index2] = "0";
 	    cartasComodos[index3] = "0";
+	    
+	    System.out.println("envelope do jogo reiniciado: "+envelopeConfidencial[0] + " " + envelopeConfidencial[1] + " " + envelopeConfidencial[2]);
+	}
+	
+	/*método para carregamento de jogo*/
+	protected static void setCartas(String[] envelope) {
+		String[] armas = {"0", "0", "0", "0", "0", "0"};
+		String[] suspeitos = {"0", "0", "0", "0", "0", "0"};
+		String[] comodos = {"0", "0", "0", "0", "0", "0", "0", "0", "0"};
+	
+		System.arraycopy(armas, 0, cartasArmas, 0, cartasArmas.length);
+		System.arraycopy(suspeitos, 0, cartasSuspeitos, 0, cartasSuspeitos.length);
+		System.arraycopy(comodos, 0, cartasComodos, 0, cartasComodos.length);
+		
+		envelopeConfidencial[0] = envelope[0];
+		envelopeConfidencial[1] = envelope[1];
+		envelopeConfidencial[2] = envelope[2];
+		
+		System.out.println("envelope do jogo carregado: "+envelopeConfidencial[0] + " " + envelopeConfidencial[1] + " " + envelopeConfidencial[2]);
 	}
 }

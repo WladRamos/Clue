@@ -31,9 +31,9 @@ public class SuspeitaTest {
 		Jogador j1 = new Jogador("Srta. Scarlet", 3), j2 = new Jogador("Coronel Mustard",3), 
 				j3 = new Jogador("Professor Plum",3); 
 		Jogador[] jogadores = {j2,j3};
-		
+		int[] cartasErradas = {0,0,0};
 		Suspeita suspeita = new Suspeita(cartas.getEnvelope()[0], cartas.getEnvelope()[1], cartas.getEnvelope()[2]);
-		assertTrue("palpite verdadeiro retornou falso", suspeita.confirmarPalpite(j1, jogadores));
+		assertTrue("palpite verdadeiro retornou falso", suspeita.confirmarPalpite(j1, jogadores, cartasErradas));
 	}
 	
 	@Test
@@ -60,7 +60,8 @@ public class SuspeitaTest {
 			if(c==carta) suspeita = new Suspeita(cartas.getEnvelope()[0], cartas.getEnvelope()[1], carta);
 		}
 		
-		assertFalse("palpite falso retornou verdadeiro", suspeita.confirmarPalpite(j1, jogadores));
+		int[] cartasErradas = {0,0,0};
+		assertFalse("palpite falso retornou verdadeiro", suspeita.confirmarPalpite(j1, jogadores, cartasErradas));
 	}
 	
 	@Test
